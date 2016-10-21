@@ -43,6 +43,9 @@ class NewYorkViewController: UIViewController {
         
         if segue.identifier == "sentSegue" {
             
+            let dest = segue.destination as! LondonViewController
+            dest.delegate = self
+            
         }
         
     }
@@ -86,4 +89,23 @@ class NewYorkViewController: UIViewController {
     }
 
 }
+
+extension NewYorkViewController: LondonViewControllerDelegate {
+    
+    func letterSent(from: LondonViewController, message: String) {
+        letterTextView.text = message
+        receivedHeaderLabel.isHidden = false
+        letterTextView.isHidden = false
+        packageImageView.isHidden = true
+        sendButton.isHidden = true
+        
+    }
+    
+    
+}
+
+
+
+
+
 
